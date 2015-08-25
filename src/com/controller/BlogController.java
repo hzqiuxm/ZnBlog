@@ -9,12 +9,14 @@ public class BlogController extends Controller {
 
     public void index(){
 
-        render("index.html");
+        render("index.jsp");
     }
 
     public void about_me(){
 
-        render("about_me.html");
+        render("about_me.jsp");
+//        render("test");
     }
+
 
 }

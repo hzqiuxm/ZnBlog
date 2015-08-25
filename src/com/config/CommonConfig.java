@@ -2,11 +2,16 @@ package com.config;
 
 
 import com.controller.BlogController;
+import com.controller.LessonController;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.model.Lessons;
+import com.model.LessonsEval;
+import com.model.LessonsPlan;
+import com.model.UserBase;
 
 /**
  * Created by hzqiuxm on 2015/8/19.
@@ -47,6 +52,7 @@ public class CommonConfig extends JFinalConfig{
     public void configRoute(Routes me) {
         // 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
         me.add("/blog", BlogController.class);
+        me.add("/lesson", LessonController.class);
         //前后端路由分开
         //me.add(new 前端配置类());
         //me.add(new 后端配置类());
@@ -66,8 +72,11 @@ public class CommonConfig extends JFinalConfig{
         ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
         me.add(arp);
 
-        // 映射blog 表到 Blog模型
-//        arp.addMapping("blog", Blog.class);
+        //建立表和模型的映射关系，例如：映射user_base表到 UserBase模型
+        arp.addMapping("user_base", UserBase.class);
+        arp.addMapping("lessons",Lessons.class);
+        arp.addMapping("lessons_plan", LessonsPlan.class);
+        arp.addMapping("lessons_eval", LessonsEval.class);
     }
 
     /**
