@@ -76,7 +76,7 @@ public class CommonConfig extends JFinalConfig{
         arp.addMapping("user_base", UserBase.class);
         arp.addMapping("lessons",Lessons.class);
         arp.addMapping("lessons_plan", LessonsPlan.class);
-        arp.addMapping("lessons_eval", LessonsEval.class);
+        arp.addMapping("lesson_eval", LessonsEval.class);
     }
 
     /**

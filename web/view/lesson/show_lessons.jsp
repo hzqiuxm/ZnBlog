@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: hzqiuxm
   Date: 2015/8/22
   Time: 15:30
   To change this template use File | Settings | File Templates.
@@ -13,25 +13,88 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>课程展示</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
   <!- #include virtual="../base.html" ->
   <!- #include file="base.html" ->
+  <jsp:include flush="true" page="/view/common/base.jsp" />
 </head>
-<body>
-  <div>
-      <table border="1">
-        <thead>
+<body class="left-sidebar">
+  <div id="content" class="mobileUI-main-content">
+    <div id="content-inner">
+      <div class="container">
+        <div id="toolbar">
+          <%--<button id="remove" class="btn btn-danger" disabled>--%>
+            <%--<i class="glyphicon glyphicon-remove"></i> Delete--%>
+          <%--</button>--%>
+            <div class="row">
+              <div id="select-button" class="btn btn-primary">我要选课</div>
+              <%--<div class="lesson_yes"></div>--%>
+            </div>
+        </div>
+        <table id="lesson_table"
+               class="table table-striped"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-search="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-show-export="true"
+               data-detail-view="true"
+               data-detail-formatter="detailFormatter"
+               data-minimum-count-columns="2"
+               data-show-pagination-switch="true"
+               data-page-list="[10, 15, 20, 50, All]"
+               data-pagination="true"
+               data-page-size="10"
+               data-id-field="id"
+               data-show-footer="true"
+               data-url="/lesson/getLessons"
+               >
+          <thead>
           <tr>
-              <th>序号</th><th>课程题目</th><th>课程主题</th><th>讲师</th><th>时间</th>
+            <th data-field="id" data-align="center" >课程编号</th>
+            <th data-field="lesson_name" data-align="center">课程名称</th>
+            <th data-field="lesson_type" data-align="center" data-sortable="true" >课程类型</th>
+            <th data-field="state" data-align="center" data-formatter="stateFormatter">课程状态</th>
           </tr>
-      </table>
+          </thead>
+
+        </table>
+
+      </div>
+    </div>
   </div>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
 
-  <!-- Latest compiled and minified Locales -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/locale/bootstrap-table-zh-CN.min.js"></script>
+  <jsp:include flush="true" page="/view/common/left.jsp"/>
+<script>
+
+  function detailFormatter(index, row) {
+    var html = [];
+//    $.each(row, function (key, value) {
+//      html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+//    });
+    html.push('<div class="text-left"><span class="text-primary ">'+ "课程主题描述:" + '</span><div class="text-muted">' + row.lesson_des +'</div></div>' );
+    return html.join('');
+  }
+
+  function getHeight() {
+    return $(window).height() - $('h1').outerHeight(true);
+  }
+
+  function responseHandler(res) {
+    $.each(res.rows, function (i, row) {
+      row.state = $.inArray(row.id, selections) !== -1;
+    });
+    return res;
+  }
+
+  function stateFormatter(value, row, index){
+    var icon = row.state === '0' ? 'glyphicon glyphicon-ok lesson_yes' : 'glyphicon glyphicon-remove lesson_no';
+    return [
+      '<div class=" ' + icon + '"></div> '
+    ].join('');
+  }
+</script>
 </body>
 </html>
