@@ -3,6 +3,7 @@ package com.config;
 
 import com.controller.BlogController;
 import com.controller.LessonController;
+import com.interceptor.GlobaInterceptor;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -86,8 +87,8 @@ public class CommonConfig extends JFinalConfig{
     @Override
     public void configInterceptor(Interceptors me) {
 
-        //可以配置多个拦截器，先调用的后完成,controller只执行一次
-//        me.add(new GlobalInterceptor());
+//        可以配置多个拦截器，先调用的后完成,controller只执行一次
+        me.add(new GlobaInterceptor());
     }
 
     /**
