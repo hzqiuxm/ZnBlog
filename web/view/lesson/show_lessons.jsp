@@ -96,5 +96,6 @@
     ].join('');
   }
 </script>
+<script src="/js/lessons.js"></script>
 </body>
 </html>

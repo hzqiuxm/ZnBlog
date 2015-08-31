@@ -13,6 +13,7 @@
 <!-- Latest compiled and minified CSS -->
 <%--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">--%>
 <link rel="stylesheet" href="/plugins/bootstracptable/bootstrap-table.min.css">
+<link rel="stylesheet" href="/plugins/sweetalert/sweetalert.css">
 
 <%--本地的插件包--%>
 <script src="/plugins/jquery/jquery-1.11.1.min.js"></script>
@@ -21,6 +22,8 @@
 <%--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>--%>
 <script src="/plugins/bootstracptable/bootstrap-table.min.js"></script>
 <script src="/plugins/bootstracptable/bootstrap-table-zh-CN.min.js"></script>
+<script src="/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/plugins/bootbox/bootbox-4.3.0.min.js"></script>
 <!-- Latest compiled and minified Locales -->
 <%--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/locale/bootstrap-table-zh-CN.min.js"></script>--%>
 
