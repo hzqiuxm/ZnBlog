@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include flush="true" page="/view/common/base.jsp" />
 <!DOCTYPE HTML>
 <!--
 Striped 1.0
@@ -97,7 +98,6 @@ Striped 1.0
   </div>
 
 </div>
-<jsp:include flush="true" page="/view/common/base.jsp" />
 <jsp:include flush="true" page="/view/common/left.jsp"/>
 </body>
 </html>
