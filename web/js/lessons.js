@@ -6,7 +6,6 @@ $(function () {
     $('#select-button').on("click", function () {
         swal({
             title: "请输入你的姓名",
-            //text: "系统后台会进行核实",
             type: "input",
             showCancelButton: true,
             closeOnConfirm: false,
@@ -32,18 +31,27 @@ $(function () {
                     if (response.result == 2) {
                         swal("操作失败", "你还有未完成的培训课程，完成后才可以再次选课!", "error");
                     }
-                    //swal("Nice!", "You wrote: " +response.result, "success");
+                    var json = eval(response);
+                    //swal("选课成功!", "你本次的选课为:" +json[0].lesson_name, "success");
+                    //swal("<<" + json[0].lesson_name + ">>", "选课成功！你可以前往【原创课程】目录进行确认!", "success");
+                    //本次课程是否满意
                     swal({
-                        title: "HTML <small>Title</small>!",
-                        text: "<html> <input type='checkbox'> Check me out</html>" ,
-                        html:true
-                });
+                        title: json[0].lesson_name,
+                        text: "是否满意本次选课结果？你至多可以选择3次",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    }, function () {
+                        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    });
 
-        }
+                }
 
-    });
-    //swal("Nice!", "You wrote: " + inputValue, "success");
-});
-})
-;
+            });
+            //swal("Nice!", "You wrote: " + inputValue, "success");
+        });
+    })
+    ;
 })

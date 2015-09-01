@@ -46,7 +46,8 @@ public class LessonController extends Controller {
         }
         //根据讲师的身份进行系统选课
         List<Lessons> lessonses = chooseLesson.getRandomLesson(userName);
-        renderJson("lessons",lessonses);
+        System.out.println("lessonses="+lessonses);
+        renderJson(lessonses);
     }
 
 
