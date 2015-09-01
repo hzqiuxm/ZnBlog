@@ -1,6 +1,8 @@
 package com.services;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.model.Lessons;
+import com.model.LessonsPlan;
 import com.model.UserBase;
 import org.apache.log4j.Logger;
 
@@ -78,6 +80,21 @@ public class ChooseLesson {
         if(setsize < n){
             randomSet(min, max, n-setsize, set);
         }
+    }
+
+    public  Boolean delOldLesson(String name){
+
+        List<LessonsPlan> lessonsPlans = LessonsPlan.DAO.find("SELECT * FROM lessons_plan where lesson_teacher = ?", name);
+        for (int i = 0; i < lessonsPlans.size(); i++) {
+            long id = lessonsPlans.get(0).getLong("id");
+            String lessonName = lessonsPlans.get(0).get("lesson_name");
+            System.out.println("id ======"+id);
+            //更新课程表的课程状态
+            int result = Db.update("UPDATE lessons SET state = ?  WHERE is_cycle = ? and lesson_name = ? ", 0, "N",lessonName);
+            System.out.println("update result ===="+result);
+            return LessonsPlan.DAO.deleteById(id);
+        }
+        return true;
     }
 
     public static void main(String[] args) {

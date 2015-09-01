@@ -1,12 +1,18 @@
 package com.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
 import com.model.Lessons;
+import com.model.LessonsPlan;
 import com.services.ChooseLesson;
 import com.services.UserService;
 import org.apache.log4j.Logger;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hzqixm on 2015/8/19.
@@ -30,24 +36,60 @@ public class LessonController extends Controller {
         ChooseLesson chooseLesson = new ChooseLesson();
         //检查讲师是否是紫牛小筑的注册讲师
         String userName = getPara("name");
+
         System.out.println("------------------------------"+userName);
         int checkuser = userService.checkUser(userName);
-        if(checkuser<1){
+        if(checkuser==99||checkuser==97){
             log.info("checkuser = "+checkuser);
-            renderJson("result","1");
+            renderJson("result",checkuser);
             return;
         }
-        //检查讲师是否有资格选课，如果存在已经选了但未开讲的课程时不允许再选
+        int chooseNum = checkuser-1;
+        //检查讲师是否有资格选课，如果存在已经选了但未开讲的课程,而且也没有选课次数时不允许再选
         Boolean checkLesson = userService.checkLessons(userName);
-        if(!checkLesson){
+        System.out.println("chooseNum ==="+chooseNum);
+        if(!checkLesson && checkuser<1){
             log.info("checkLesson = "+checkLesson);
-            renderJson("result","2");
+            renderJson("result","95");
             return;
         }
         //根据讲师的身份进行系统选课
         List<Lessons> lessonses = chooseLesson.getRandomLesson(userName);
         System.out.println("lessonses="+lessonses);
-        renderJson(lessonses);
+
+        //新增选课记录,先删除原来的
+        if(chooseLesson.delOldLesson(userName)){
+            System.out.println("之前的选课记录已经删除");
+        }else {
+            renderText("系统内部错误，请联系管理员!");
+        }
+
+        LessonsPlan lessonsPlan = new LessonsPlan();
+        Date now = new Date();
+        String nowStr=new SimpleDateFormat("yyyyMMddhhmmss").format(now);
+        lessonsPlan.set("lesson_name",lessonses.get(0).get("lesson_name"));
+        lessonsPlan.set("lesson_title","待定");
+        lessonsPlan.set("lesson_des","待补充");
+        lessonsPlan.set("lesson_teacher",userName);
+        lessonsPlan.set("create_time",now);
+        lessonsPlan.set("state","0");
+        lessonsPlan.save();
+
+        //更新选课次数与课程状态
+        int result = Db.update("UPDATE user_base SET choose_num = ?  WHERE real_name = ?",chooseNum,userName);
+        System.out.println("result  ====="+result);
+
+        //更新课程表的课程状态
+
+        int result2 = Db.update("UPDATE lessons SET state = ?  WHERE is_cycle = ? and lesson_name = ? ", 1, "N",lessonses.get(0).get("lesson_name"));
+        System.out.println("update result2 ===="+result2);
+
+        Map<String, Object> map=new HashMap<String, Object>();
+        map.put("lessons",lessonses);
+        map.put("chooseNum",chooseNum);
+        renderJson(map);
+//        renderJson(lessonses);
+
     }
 
 

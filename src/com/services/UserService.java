@@ -9,21 +9,28 @@ import java.util.List;
  * Created by hzqixm on 2015/8/31.
  */
 public class UserService {
-    private static final int NO_TEACHER = 0;
-    private static final int YES_TEACHER = 1;
+    private static final int NO_TEACHER = 99;
+    private static final int NO_CHOOSE = 97;
 
     /**
-     * 判断某人是否注册讲师
+     * 判断某人是否注册讲师,是否还有选课次数
      * @param name 真实姓名
-     * @return 0:不是注册讲师 1：是注册讲师
+     * @return 99:不是注册讲师 98：是注册讲师 97:没有选课次数 其他表示剩余选课次数
      */
     public int checkUser(String name){
 
         List<UserBase> userBases = UserBase.DAO.find("select * from user_base where real_name = ?",name);
+        int chooseNum = 0;
         if(userBases.size()<1||userBases == null){
             return NO_TEACHER;
+        }else {
+            chooseNum = userBases.get(0).get("choose_num");
+            System.out.println(chooseNum);
+            if(chooseNum<1){
+                return  NO_CHOOSE;
+            }
         }
-        return YES_TEACHER;
+        return chooseNum;
     }
 
     /**
@@ -39,5 +46,7 @@ public class UserService {
         }
         return true;
     }
+
+
 
 }
