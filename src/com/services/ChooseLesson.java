@@ -38,7 +38,7 @@ public class ChooseLesson {
         }
 
         HashSet<Integer>  setnum = null;
-        if(lessonses.size()<4){
+        if(lessonses.size()<2){
             return lessonses;
         }else {
             int totalNum = lessonses.size();
@@ -47,8 +47,7 @@ public class ChooseLesson {
         }
 
         Integer nums[] = setnum.toArray( new Integer[0]);
-        System.out.println(nums[0]);
-        System.out.println("lessonses.get(nums[10])");
+
         for (int i = 0; i < setnum.size(); i++) {
             Lessons lessons = lessonses.get(nums[i]);
             finalLessons.add(lessons);

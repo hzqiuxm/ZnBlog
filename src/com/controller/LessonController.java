@@ -80,7 +80,6 @@ public class LessonController extends Controller {
         System.out.println("result  ====="+result);
 
         //更新课程表的课程状态
-
         int result2 = Db.update("UPDATE lessons SET state = ?  WHERE is_cycle = ? and lesson_name = ? ", 1, "N",lessonses.get(0).get("lesson_name"));
         System.out.println("update result2 ===="+result2);
 
