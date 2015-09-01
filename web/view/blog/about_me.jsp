@@ -13,7 +13,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
-  <script src="/css/5grid/init.js?use=mobile,desktop,1200px,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+  <script src="css/5grid/init.js?use=mobile,desktop,1200px,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
 
 </head>
 

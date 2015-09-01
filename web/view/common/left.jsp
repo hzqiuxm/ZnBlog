@@ -6,10 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/style-desktop.css" />
-<link rel="stylesheet" href="/css/style-1200px.css" />
-<link rel="stylesheet" href="/plugins/sweetalert/sweetalert.css">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style-desktop.css" />
+<link rel="stylesheet" href="css/style-1200px.css" />
+<link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
 <%--<link rel="stylesheet" href="/css/5grid/core.css" />--%>
 <%--<link rel="stylesheet" href="/css/5grid/core-desktop.css" />--%>
 <%--<link rel="stylesheet" href="/css/5grid/core-1200px.css" />--%>
@@ -26,11 +26,11 @@
   <!-- Nav -->
   <nav id="nav" class="mobileUI-site-nav">
     <ul>
-      <li class="current_page_item"><a href="/blog">原创博文</a></li>
-      <li><a href="#">原创课程</a></li>
+      <li class="current_page_item"><a href="blog">原创博文</a></li>
+      <li><a href="lessonPlan">原创课程</a></li>
       <li><a href="javascript:kejian()">课件下载</a></li>
-      <li><a href="/lesson">选课系统</a></li>
-      <li><a href="/blog/about_me">关于我们</a></li>
+      <li><a href="lesson">选课系统</a></li>
+      <li><a href="blog/about_me">关于我们</a></li>
     </ul>
   </nav>
 
@@ -135,5 +135,5 @@
   }
 </script>
 <%--<jsp:include flush="true" page="/view/common/base.jsp" />--%>
-<script src="/css/5grid/init.js?use=mobile,desktop,1200px,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
-<script src="/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="css/5grid/init.js?use=mobile,desktop,1200px,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+<script src="plugins/sweetalert/sweetalert.min.js"></script>

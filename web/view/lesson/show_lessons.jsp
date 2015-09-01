@@ -48,7 +48,7 @@
                data-page-size="10"
                data-id-field="id"
                data-show-footer="true"
-               data-url="/lesson/getLessons"
+               data-url="lesson/getLessons"
                >
           <thead>
           <tr>
@@ -96,6 +96,6 @@
     ].join('');
   }
 </script>
-<script src="/js/lessons.js"></script>
+<script src="js/lessons.js"></script>
 </body>
 </html>

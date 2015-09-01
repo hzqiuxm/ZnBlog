@@ -3,6 +3,7 @@ package com.config;
 
 import com.controller.BlogController;
 import com.controller.LessonController;
+import com.controller.LessonPlanController;
 import com.interceptor.GlobaInterceptor;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
@@ -54,6 +55,7 @@ public class CommonConfig extends JFinalConfig{
         // 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
         me.add("/blog", BlogController.class);
         me.add("/lesson", LessonController.class);
+        me.add("/lessonPlan", LessonPlanController.class);
         //前后端路由分开
         //me.add(new 前端配置类());
         //me.add(new 后端配置类());

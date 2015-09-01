@@ -52,7 +52,7 @@ Striped 1.0
             <li><a href="#" class="link-icon24 link-icon24-4">128</a></li>
           </ul>
         </div>
-        <a href="#" class="image image-full"><img src="/images/geek01.jpg" alt="" /></a>
+        <a href="#" class="image image-full"><img src="images/geek01.jpg" alt="" /></a>
         <p>
           尽请期待... ...
         </p>
@@ -74,7 +74,7 @@ Striped 1.0
             <li><a href="#" class="link-icon24 link-icon24-4">96</a></li>
           </ul>
         </div>
-        <a href="#" class="image image-full"><img src="/images/geek02.jpg" alt="" /></a>
+        <a href="#" class="image image-full"><img src="images/geek02.jpg" alt="" /></a>
         <p>
           敬请期待... ...
         </p>
