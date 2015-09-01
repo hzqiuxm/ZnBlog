@@ -26,7 +26,8 @@
   <!-- Nav -->
   <nav id="nav" class="mobileUI-site-nav">
     <ul>
-      <li class="current_page_item"><a href="blog">原创博文</a></li>
+      <%--<li class="current_page_item"><a href="blog">原创博文</a></li>--%>
+      <li><a href="blog">原创博文</a></li>
       <li><a href="lessonPlan">原创课程</a></li>
       <li><a href="javascript:kejian()">课件下载</a></li>
       <li><a href="lesson">选课系统</a></li>

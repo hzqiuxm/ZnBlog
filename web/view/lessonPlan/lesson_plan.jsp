@@ -11,6 +11,11 @@
   <div id="content" class="mobileUI-main-content">
     <div id="content-inner">
       <div class="container">
+          <div id="toolbar">
+              <div class="row">
+                  <div><div class="bg-success">提示:双击数据行可以编辑课程详情</div></div>
+              </div>
+          </div>
         <table id="lesson_plan"
                class="table table-striped"
                data-toggle="table"
