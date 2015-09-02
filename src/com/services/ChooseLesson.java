@@ -34,7 +34,7 @@ public class ChooseLesson {
         }else if (YD.equalsIgnoreCase(strIdentity)){
             lessonses = Lessons.DAO.find("select * from lessons where state = ? and lesson_type not in('运维')",0);
         }else {
-            lessonses = Lessons.DAO.find("select * from lessons where state = ? ",0);
+            lessonses = Lessons.DAO.find("select * from lessons where state = ? and lesson_type not in('设计，'移动')",0);
         }
 
         HashSet<Integer>  setnum = null;
